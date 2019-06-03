@@ -1,9 +1,8 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { View, Animated, StyleSheet } from 'react-native';
-import withTheme from '../../../Theme/withTheme';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import { View, Animated, StyleSheet } from "react-native";
 
-class ProgressCircleDeterminate extends Component {
+export default class ProgressCircleDeterminate extends Component {
   static propTypes = {
     value: PropTypes.number,
     size: PropTypes.number,
@@ -17,15 +16,15 @@ class ProgressCircleDeterminate extends Component {
     shouldAnimateFirstValue: PropTypes.bool,
     onChange: PropTypes.func,
     onChangeAnimationEnd: PropTypes.func,
-    noTrackColor: PropTypes.bool,
+    noTrackColor: PropTypes.bool
   };
 
   static defaultProps = {
     value: 0,
     size: 64,
     thickness: 4,
-    color: '#4c90ff',
-    unfilledColor: 'transparent',
+    color: "#4c90ff",
+    unfilledColor: "transparent",
     noTrackColor: true,
     style: {},
     children: null,
@@ -33,16 +32,16 @@ class ProgressCircleDeterminate extends Component {
     animationConfig: { duration: 200 },
     shouldAnimateFirstValue: false,
     onChange() {},
-    onChangeAnimationEnd() {},
+    onChangeAnimationEnd() {}
   };
 
   state = {
     animatedValue:
-      this.props.value.constructor.name === 'AnimatedValue'
+      this.props.value.constructor.name === "AnimatedValue"
         ? null
         : new Animated.Value(
-            this.props.shouldAnimateFirstValue ? 0 : this.props.value,
-          ),
+            this.props.shouldAnimateFirstValue ? 0 : this.props.value
+          )
   };
 
   componentDidMount() {
@@ -63,7 +62,7 @@ class ProgressCircleDeterminate extends Component {
     return {
       width: this.props.size,
       height: this.props.size,
-      borderRadius: this.props.size / 2,
+      borderRadius: this.props.size / 2
     };
   }
 
@@ -71,11 +70,11 @@ class ProgressCircleDeterminate extends Component {
     return {
       width: this.props.size / 2,
       height: this.props.size,
-      overflow: 'hidden',
+      overflow: "hidden"
     };
   }
 
-  ANIMATION_TYPES = ['timing', 'spring', 'bounce', 'decay'];
+  ANIMATION_TYPES = ["timing", "spring", "bounce", "decay"];
 
   getAnimationMethod() {
     return this.ANIMATION_TYPES.includes(this.props.animationMethod)
@@ -85,7 +84,7 @@ class ProgressCircleDeterminate extends Component {
 
   handleChange = (value = this.props.value) => {
     this.props.onChange();
-    if (value.constructor.name === 'AnimatedValue') {
+    if (value.constructor.name === "AnimatedValue") {
       return;
     }
 
@@ -100,13 +99,13 @@ class ProgressCircleDeterminate extends Component {
     Animated[this.getAnimationMethod()](this.state.animatedValue, {
       toValue: value / 100,
       useNativeDriver: true,
-      ...this.props.animationConfig,
+      ...this.props.animationConfig
     }).start(this.props.onChangeAnimationEnd);
 
   renderHalfCircle = ({ isFlipped = false } = {}) => {
     const { size, color, thickness, value } = this.props;
     const valueToInterpolate =
-      value.constructor.name === 'AnimatedValue'
+      value.constructor.name === "AnimatedValue"
         ? value
         : this.state.animatedValue;
 
@@ -115,8 +114,9 @@ class ProgressCircleDeterminate extends Component {
         pointerEvents="none"
         style={[
           this.getHalfCircleContainerStyle(),
-          { transform: [{ scaleX: isFlipped ? -1 : 1 }] },
-        ]}>
+          { transform: [{ scaleX: isFlipped ? -1 : 1 }] }
+        ]}
+      >
         <Animated.View
           style={{
             width: size,
@@ -126,18 +126,19 @@ class ProgressCircleDeterminate extends Component {
                 rotate: valueToInterpolate.interpolate({
                   inputRange: isFlipped ? [0, 0.5] : [0.5, 1],
                   outputRange: isFlipped
-                    ? ['180deg', '0deg']
-                    : ['-180deg', '0deg'],
-                  extrapolate: 'clamp',
-                }),
-              },
-            ],
-          }}>
+                    ? ["180deg", "0deg"]
+                    : ["-180deg", "0deg"],
+                  extrapolate: "clamp"
+                })
+              }
+            ]
+          }}
+        >
           <View style={this.getHalfCircleContainerStyle()}>
             <View
               style={[
                 this.getFullCircleStyle(),
-                { borderWidth: thickness, borderColor: color },
+                { borderWidth: thickness, borderColor: color }
               ]}
             />
           </View>
@@ -152,7 +153,7 @@ class ProgressCircleDeterminate extends Component {
       unfilledColor,
       children,
       style,
-      noTrackColor,
+      noTrackColor
     } = this.props;
 
     return (
@@ -163,10 +164,11 @@ class ProgressCircleDeterminate extends Component {
             this.getFullCircleStyle(),
             {
               borderWidth: noTrackColor ? 0 : thickness,
-              borderColor: unfilledColor,
+              borderColor: unfilledColor
             },
-            styles.innerCircleContainer,
-          ]}>
+            styles.innerCircleContainer
+          ]}
+        >
           {children}
         </View>
         {this.renderHalfCircle()}
@@ -178,15 +180,13 @@ class ProgressCircleDeterminate extends Component {
 
 const styles = StyleSheet.create({
   mainContainer: {
-    flexDirection: 'row',
-    borderColor: 'transparent',
-    backgroundColor: 'transparent',
+    flexDirection: "row",
+    borderColor: "transparent",
+    backgroundColor: "transparent"
   },
   innerCircleContainer: {
-    position: 'absolute',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
+    position: "absolute",
+    justifyContent: "center",
+    alignItems: "center"
+  }
 });
-
-export default withTheme(ProgressCircleDeterminate);

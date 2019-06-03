@@ -12,7 +12,7 @@ addParameters({
     panelPosition: "bottom",
     isToolshown: true,
 
-    name: "React Native Material Drawers"
+    name: "React Native Material Indicators"
   },
 
   viewport: {}

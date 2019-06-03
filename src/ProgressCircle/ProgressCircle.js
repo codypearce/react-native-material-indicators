@@ -1,10 +1,9 @@
-import PropTypes from 'prop-types';
-import React, { PureComponent } from 'react';
-import { View, Animated, Easing } from 'react-native';
-import withTheme from '../../../Theme/withTheme';
-import ProgressCircleDeterminate from './ProgressCircleDeterminate';
+import PropTypes from "prop-types";
+import React, { PureComponent } from "react";
+import { View, Animated, Easing } from "react-native";
+import ProgressCircleDeterminate from "./ProgressCircleDeterminate";
 
-class ProgressCircle extends PureComponent {
+export default class ProgressCircle extends PureComponent {
   static propTypes = {
     color: PropTypes.string,
     size: PropTypes.number,
@@ -14,18 +13,18 @@ class ProgressCircle extends PureComponent {
     animationEasing: PropTypes.func,
     visible: PropTypes.bool,
     determinate: PropTypes.bool,
-    widthOfBorder: PropTypes.number,
+    widthOfBorder: PropTypes.number
   };
 
   static defaultProps = {
-    color: 'rgb(0, 0, 0)',
+    color: "rgb(0, 0, 0)",
     size: 48,
     easing: Easing.bezier(0.4, 0.0, 0.7, 1.0),
     animationEasing: Easing.linear,
     animationDuration: 2400,
     visible: true,
     determinate: false,
-    widthOfBorder: 10,
+    widthOfBorder: 10
   };
 
   constructor(props) {
@@ -34,7 +33,7 @@ class ProgressCircle extends PureComponent {
 
   state = {
     frames: (60 * this.props.animationDuration) / 1000,
-    progress: new Animated.Value(0),
+    progress: new Animated.Value(0)
   };
 
   componentDidMount() {
@@ -61,12 +60,12 @@ class ProgressCircle extends PureComponent {
       Animated.timing(progress, {
         duration: animationDuration,
         easing: animationEasing,
-        toValue: 1,
+        toValue: 1
       }),
 
       {
-        iterations: -1,
-      },
+        iterations: -1
+      }
     ).start();
   }
 
@@ -79,19 +78,19 @@ class ProgressCircle extends PureComponent {
     const { progress } = this.state;
 
     const inputRange = [0, 1];
-    const outputRange = [0 + 30 + 15 + 'deg', 2 * 360 + 30 + 15 + 'deg'];
+    const outputRange = [0 + 30 + 15 + "deg", 2 * 360 + 30 + 15 + "deg"];
 
     const rotate = {
       rotate: progress.interpolate({
         inputRange,
-        outputRange,
-      }),
+        outputRange
+      })
     };
 
     return {
       width: size,
       height: size,
-      transform: [rotate],
+      transform: [rotate]
     };
   }
 
@@ -102,14 +101,14 @@ class ProgressCircle extends PureComponent {
     const rotate = {
       rotate: progress.interpolate({
         inputRange: this.getInputRange(progress),
-        outputRange: this.getOutputRange(progress),
-      }),
+        outputRange: this.getOutputRange(progress)
+      })
     };
 
     return {
       width: size,
       height: size,
-      transform: [rotate],
+      transform: [rotate]
     };
   }
 
@@ -117,7 +116,7 @@ class ProgressCircle extends PureComponent {
     const { frames } = this.state;
     const inputRange = Array.from(
       new Array(frames),
-      (undefined, frameIndex) => frameIndex / (frames - 1),
+      (undefined, frameIndex) => frameIndex / (frames - 1)
     );
 
     return inputRange;
@@ -139,8 +138,8 @@ class ProgressCircle extends PureComponent {
 
         const direction = +1;
 
-        return direction * (180 - 30) * easing(progress) + rotation + 'deg';
-      },
+        return direction * (180 - 30) * easing(progress) + rotation + "deg";
+      }
     );
 
     return outputRange;
@@ -156,7 +155,7 @@ class ProgressCircle extends PureComponent {
     const containerStyle = {
       width: size,
       height: size / 2,
-      overflow: 'hidden',
+      overflow: "hidden"
     };
 
     const lineStyle = {
@@ -164,7 +163,7 @@ class ProgressCircle extends PureComponent {
       height: size,
       borderColor: color,
       borderWidth: size / widthOfBorder,
-      borderRadius: size / 2,
+      borderRadius: size / 2
     };
 
     if (determinate) return <ProgressCircleDeterminate {...this.props} />;
@@ -184,5 +183,3 @@ class ProgressCircle extends PureComponent {
     );
   }
 }
-
-export default withTheme(ProgressCircle);

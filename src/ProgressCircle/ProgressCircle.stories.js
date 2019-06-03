@@ -1,54 +1,54 @@
-import React from 'react';
-import { View } from 'react-native';
+import React from "react";
+import { View } from "react-native";
 
-import { ProgressCircle, Button } from '../../..';
-import { State, Store } from '@sambego/storybook-state';
-import Header from '../../../storybook/components/Header';
-import Container from '../../../storybook/components/Container';
-import { storiesOf } from '../../../storybook/helpers/storiesOf';
+import { Button } from "material-bread";
+import { State, Store } from "@sambego/storybook-state";
+import Container from "../../storybook/components/Container";
+import { storiesOf } from "../../storybook/helpers/storiesOf";
+import ProgressCircle from "./ProgressCircle.js";
 
 const store = new Store({
   value3: 30,
   visible2: true,
-  circleValue3: 40,
+  circleValue3: 40
 });
 
-export default storiesOf('Components|Progress/ProgressCircle', module)
-  .addParameters({ jest: ['ProgressCircle'] })
+export default storiesOf("ProgressCircle", module)
+  .addParameters({ jest: ["ProgressCircle"] })
 
-  .add('Indeterminate', () => (
+  .add("Indeterminate", () => (
     <Container>
-      <Header title={'Progress Circle'} />
-
       <View
-        style={{ flexDirection: 'row', flexWrap: 'wrap', marginBottom: 40 }}>
+        style={{ flexDirection: "row", flexWrap: "wrap", marginBottom: 40 }}
+      >
         <ProgressCircle />
-        <ProgressCircle color={'#03A9F4'} />
-        <ProgressCircle color={'#E91E63'} />
-        <ProgressCircle color={'#009688'} />
+        <ProgressCircle color={"#03A9F4"} />
+        <ProgressCircle color={"#E91E63"} />
+        <ProgressCircle color={"#009688"} />
       </View>
       <View
-        style={{ flexDirection: 'row', flexWrap: 'wrap', marginBottom: 40 }}>
+        style={{ flexDirection: "row", flexWrap: "wrap", marginBottom: 40 }}
+      >
         <ProgressCircle animationDuration={4800} />
-        <ProgressCircle color={'#03A9F4'} animationDuration={4800} />
-        <ProgressCircle color={'#E91E63'} animationDuration={4800} />
-        <ProgressCircle color={'#009688'} animationDuration={4800} />
+        <ProgressCircle color={"#03A9F4"} animationDuration={4800} />
+        <ProgressCircle color={"#E91E63"} animationDuration={4800} />
+        <ProgressCircle color={"#009688"} animationDuration={4800} />
       </View>
       <View
-        style={{ flexDirection: 'row', flexWrap: 'wrap', marginBottom: 40 }}>
+        style={{ flexDirection: "row", flexWrap: "wrap", marginBottom: 40 }}
+      >
         <ProgressCircle animationDuration={1200} />
-        <ProgressCircle color={'#03A9F4'} animationDuration={1200} />
-        <ProgressCircle color={'#E91E63'} animationDuration={1200} />
-        <ProgressCircle color={'#009688'} animationDuration={1200} />
+        <ProgressCircle color={"#03A9F4"} animationDuration={1200} />
+        <ProgressCircle color={"#E91E63"} animationDuration={1200} />
+        <ProgressCircle color={"#009688"} animationDuration={1200} />
       </View>
     </Container>
   ))
-  .add('Determinate', () => (
+  .add("Determinate", () => (
     <Container>
-      <Header title={'Progress Circle'} />
       <State store={store} style={{ flex: 1 }}>
         {state => (
-          <View style={{ flexDirection: 'column', marginBottom: 40 }}>
+          <View style={{ flexDirection: "column", marginBottom: 40 }}>
             <ProgressCircle
               value={state.circleValue3}
               size={48}
@@ -64,17 +64,17 @@ export default storiesOf('Components|Progress/ProgressCircle', module)
             <Button
               type="outlined"
               style={{ marginTop: 20 }}
-              text={'Change Value'}
+              text={"Change Value"}
               onPress={() => {
                 store.set({
-                  circleValue3: Math.floor(Math.random() * Math.floor(100)),
+                  circleValue3: Math.floor(Math.random() * Math.floor(100))
                 });
               }}
             />
           </View>
         )}
       </State>
-      <View style={{ flexDirection: 'row', marginBottom: 40 }}>
+      <View style={{ flexDirection: "row", marginBottom: 40 }}>
         <ProgressCircle
           value={25}
           size={48}
@@ -116,7 +116,7 @@ export default storiesOf('Components|Progress/ProgressCircle', module)
           determinate
         />
       </View>
-      <View style={{ flexDirection: 'row' }}>
+      <View style={{ flexDirection: "row" }}>
         <ProgressCircle
           value={25}
           size={48}

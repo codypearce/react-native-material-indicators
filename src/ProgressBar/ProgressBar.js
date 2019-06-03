@@ -1,11 +1,10 @@
-import PropTypes from 'prop-types';
-import React, { PureComponent } from 'react';
-import { Animated, Easing } from 'react-native';
-import withTheme from '../../../Theme/withTheme';
-import styles from './ProgressBar.styles';
-import { default as colorTool } from 'color';
+import PropTypes from "prop-types";
+import React, { PureComponent } from "react";
+import { Animated, Easing } from "react-native";
+import styles from "./ProgressBar.styles";
+import { default as colorTool } from "color";
 
-class ProgressBar extends PureComponent {
+export default class ProgressBar extends PureComponent {
   static propTypes = {
     color: PropTypes.string,
     height: PropTypes.number,
@@ -16,14 +15,14 @@ class ProgressBar extends PureComponent {
     animationDuration: PropTypes.number,
     value: PropTypes.number,
     visible: PropTypes.bool,
-    style: PropTypes.object,
-    theme: PropTypes.object,
+    style: PropTypes.object
   };
 
   static defaultProps = {
     animationDuration: 1000,
     indcatorStartPosition: 0,
     easing: Easing.bezier(0.65, 0.815, 0.735, 0.395),
+    color: "#2196F3"
   };
 
   state = {
@@ -33,7 +32,7 @@ class ProgressBar extends PureComponent {
     trackScaleY: new Animated.Value(0),
     trackOpacity: new Animated.Value(0),
     trackHeight: 0,
-    trackWidth: 0,
+    trackWidth: 0
   };
 
   componentDidMount() {
@@ -67,12 +66,12 @@ class ProgressBar extends PureComponent {
     Animated.parallel([
       Animated.timing(trackScaleY, {
         toValue: scale,
-        duration: 300,
+        duration: 300
       }),
       Animated.timing(trackOpacity, {
         toValue: opacity,
-        duration: 300,
-      }),
+        duration: 300
+      })
     ]).start(() => {
       if (determinate) {
         this.startDeterminateAnimation();
@@ -91,8 +90,8 @@ class ProgressBar extends PureComponent {
     Animated.parallel([
       Animated.timing(indicatorWidth, {
         toValue: trackWidth * (value / 100),
-        duration: animationDuration,
-      }),
+        duration: animationDuration
+      })
     ]).start();
   }
 
@@ -107,18 +106,18 @@ class ProgressBar extends PureComponent {
         Animated.timing(indicatorPosition, {
           toValue: trackWidth,
           duration: animationDuration,
-          easing,
+          easing
         }),
         Animated.timing(indicatorScaleX, {
           toValue: 2,
           duration: animationDuration / 4,
-          easing,
-        }),
+          easing
+        })
       ]),
 
       {
-        iterations: -1,
-      },
+        iterations: -1
+      }
     ).start();
   }
 
@@ -127,28 +126,24 @@ class ProgressBar extends PureComponent {
 
     this.setState({
       trackWidth: width,
-      trackHeight: height,
+      trackHeight: height
     });
   };
 
   render() {
-    const { height, color, trackStyle, determinate, theme } = this.props;
+    const { height, color, trackStyle, determinate } = this.props;
     const {
       indicatorPosition,
       indicatorScaleX,
       indicatorWidth,
       trackScaleY,
-      trackOpacity,
+      trackOpacity
     } = this.state;
 
-    const trackColor = color
-      ? colorTool(color)
-          .fade(0.4)
-          .string()
-      : colorTool(theme.primary.main)
-          .fade(0.4)
-          .string(); // .6 alpha of indicator
-    const indicatorColor = color ? color : theme.primary.main;
+    const trackColor = colorTool(color)
+      .fade(0.4)
+      .string();
+    const indicatorColor = color;
 
     return (
       <Animated.View
@@ -159,10 +154,11 @@ class ProgressBar extends PureComponent {
             backgroundColor: trackColor,
             height: height ? height : 4,
             opacity: trackOpacity,
-            transform: [{ scaleY: trackScaleY }],
+            transform: [{ scaleY: trackScaleY }]
           },
-          trackStyle,
-        ]}>
+          trackStyle
+        ]}
+      >
         <Animated.View
           style={[
             styles.indicator,
@@ -172,14 +168,12 @@ class ProgressBar extends PureComponent {
               width: determinate ? indicatorWidth : 112,
               transform: [
                 { translateX: indicatorPosition },
-                { scaleX: indicatorScaleX },
-              ],
-            },
+                { scaleX: indicatorScaleX }
+              ]
+            }
           ]}
         />
       </Animated.View>
     );
   }
 }
-
-export default withTheme(ProgressBar);
