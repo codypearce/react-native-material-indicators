@@ -1,6 +1,6 @@
 # react-native-material-indicators
 
-React Native Material Indicators for iOS, Android, Web, Electron, and other platforms. If you need more cross-platform material components, check out [Material Bread](https://github.com/codypearce/material-bread).
+All 4 material indicators(Indeterminate and Determinate ProgressBar and ProgressCircle) build in React Native that works on iOS, Android, Web, Electron, and other platforms. If you need more cross-platform material components, check out [Material Bread](https://github.com/codypearce/material-bread).
 
 ### [Storybook Demos](https://codypearce.github.io/react-native-material-indicators/)
 
@@ -9,10 +9,12 @@ React Native Material Indicators for iOS, Android, Web, Electron, and other plat
 
 - [Installation](#installation)
 - [Progress Bar](#progress-bar)
-  - [Usage](#usage)
+  - [Indeterminate](#progresss-bar-indeterminate)
+  - [Determinate](#progresss-bar-determinate)
   - [Props](#props)
 - [Progress Circle](#progress-circle)
-  - [Usage](#usage)
+  - [Indeterminate](#progresss-circle-indeterminate)
+  - [Determinate](#progresss-circle-determinate)
   - [Props](#props)
 
 ### Installation
