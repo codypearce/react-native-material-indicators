@@ -36,17 +36,36 @@ class App extends Component {
   }
   render() {
     return (
-      <ProgressBar
-        visible
-        trackStyle={{ marginTop: 20 }}
-        color={"#E91E63"}
-      />
+      <ProgressBar visible color={"#E91E63"} />
     );
   }
 }
 ```
 
 #### Progress Bar Determinate
+
+```
+import React, { Component } from 'react';
+import { ProgressBar } from 'react-native-material-indicator';
+
+class App extends Component {
+  constructor(props) {
+    super(props)
+  }
+  render() {
+    return (
+      <ProgressBar
+         determinate
+          value={50}
+          color={"#009688"}
+          animationDuration={500}
+          trackStyle={{ marginBottom: 40 }}
+          visible
+      />
+    );
+  }
+}
+```
 
 #### Props
 | Name                  | Description                                                      | Type   | Default |
@@ -62,9 +81,50 @@ class App extends Component {
 | value                 | Percent out of 100 the indicator should fill in determinate mode | number |         |
 | visible               | Whether bar is visible or not                                    | bool   |         |
 
-### Progress Bar
+### Progress Circle
 
-#### Usage
+#### Progress Circle Indeterminate
+```
+import React, { Component } from 'react';
+import { ProgressCircle } from 'react-native-material-indicator';
+
+class App extends Component {
+  constructor(props) {
+    super(props)
+  }
+  render() {
+    return (
+      <ProgressCircle />
+    );
+  }
+}
+```
+
+#### Progress Circle Determinate
+```
+import React, { Component } from 'react';
+import { ProgressCircle } from 'react-native-material-indicator';
+
+class App extends Component {
+  constructor(props) {
+    super(props)
+  }
+  render() {
+    return (
+      <ProgressCircle
+          value={25}
+          size={48}
+          thickness={4}
+          color="#E91E63"
+          animationMethod="timing"
+          animationConfig={{ duration: 1000 }}
+          shouldAnimateFirstValue
+          determinate
+        />
+    );
+  }
+}
+```
 
 #### Props
 
