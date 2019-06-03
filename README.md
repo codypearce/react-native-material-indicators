@@ -24,7 +24,7 @@ npm install react-native-material-indicators --save
 
 ### Progress Bar
 
-#### Usage
+#### Progress Bar Indeterminate
 
 ```
 import React, { Component } from 'react';
@@ -46,11 +46,39 @@ class App extends Component {
 }
 ```
 
-#### Props
+#### Progress Bar Determinate
 
+#### Props
+| Name                  | Description                                                      | Type   | Default |
+|-----------------------|------------------------------------------------------------------|--------|---------|
+| animationDuration     | Length of each animation loop in ms                              | number | 1000    |
+| color                 | Color of bar                                                     | string |         |
+| determinate           | Whether bar continues to animate or not                          | bool   |         |
+| easing                | Easing function for bar animation                                | func   |         |
+| height                | Height of track and indicator                                    | number | 4       |
+| indcatorStartPosition | Where the indicator starts before the animation begins           | number | 0       |
+| style                 | Styles root element                                              | object |         |
+| trackStyle            | Styles track containing the indicator                            | object |         |
+| value                 | Percent out of 100 the indicator should fill in determinate mode | number |         |
+| visible               | Whether bar is visible or not                                    | bool   |         |
 
 ### Progress Bar
 
 #### Usage
 
 #### Props
+
+| Name                    | Description                                                      | Type   | Default       |
+|-------------------------|------------------------------------------------------------------|--------|---------------|
+| animationDuration       | Length of each animation loop in ms                              | number | 1000          |
+| animationEasing         | Easing function for indeterminate                                | func   | Easing.linear |
+| color                   | Color of circle                                                  | string |               |
+| determinate             | Whether Circle continues to animate or not                       | bool   |               |
+| easing                  | Easing function for determinate animation                        | func   |               |
+| indcatorStartPosition   | Where the indicator starts before the animation begins           | number | 0             |
+| shouldAnimateFirstValue | Wether the determinate value should animate at start             | bool   | true          |
+| size                    | Diameter of circle                                               | number | 48            |
+| style                   | Styles root element                                              | object |               |
+| trackStyle              | Styles track containing the indicator                            | object |               |
+| value                   | Percent out of 100 the indicator should fill in determinate mode | number |               |
+| visible                 | Whether circle is visible or not                                 | bool   |               |
