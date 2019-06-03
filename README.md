@@ -4,6 +4,8 @@ All 4 material indicators(Indeterminate and Determinate ProgressBar and Progress
 
 ### [Storybook Demos](https://codypearce.github.io/react-native-material-indicators/)
 
+<img src="https://i.imgur.com/gsSGFtx.gif" />
+
 
 ### Table of Contents
 
