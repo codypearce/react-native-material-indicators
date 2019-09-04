@@ -52,7 +52,7 @@
   "jest": {
     "preset": "react-native"
   },
-  "main": "src/index.js",
+  "main": "dist/index.js",
   "keywords": [
     "react native",
     "material design",
