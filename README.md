@@ -30,7 +30,7 @@ npm install react-native-material-indicators --save
 
 ```
 import React, { Component } from 'react';
-import { ProgressBar } from 'react-native-material-indicator';
+import { ProgressBar } from 'react-native-material-indicators';
 
 export default class App extends Component {
   constructor(props) {
@@ -48,7 +48,7 @@ export default class App extends Component {
 
 ```
 import React, { Component } from 'react';
-import { ProgressBar } from 'react-native-material-indicator';
+import { ProgressBar } from 'react-native-material-indicators';
 
 export default class App extends Component {
   constructor(props) {
@@ -108,7 +108,7 @@ class App extends Component {
 
 ```
 import React, { Component } from 'react';
-import { ProgressCircle } from 'react-native-material-indicator';
+import { ProgressCircle } from 'react-native-material-indicators';
 
 class App extends Component {
   constructor(props) {
