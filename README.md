@@ -6,7 +6,6 @@ All 4 material indicators(Indeterminate and Determinate ProgressBar and Progress
 
 <img src="https://i.imgur.com/gsSGFtx.gif" />
 
-
 ### Table of Contents
 
 - [Installation](#installation)
@@ -20,6 +19,7 @@ All 4 material indicators(Indeterminate and Determinate ProgressBar and Progress
   - [Props](#props)
 
 ### Installation
+
 ```bash
 npm install react-native-material-indicators --save
 ```
@@ -32,7 +32,7 @@ npm install react-native-material-indicators --save
 import React, { Component } from 'react';
 import { ProgressBar } from 'react-native-material-indicator';
 
-class App extends Component {
+export default class App extends Component {
   constructor(props) {
     super(props)
   }
@@ -50,7 +50,7 @@ class App extends Component {
 import React, { Component } from 'react';
 import { ProgressBar } from 'react-native-material-indicator';
 
-class App extends Component {
+export default class App extends Component {
   constructor(props) {
     super(props)
   }
@@ -70,8 +70,9 @@ class App extends Component {
 ```
 
 #### Props
+
 | Name                  | Description                                                      | Type   | Default |
-|-----------------------|------------------------------------------------------------------|--------|---------|
+| --------------------- | ---------------------------------------------------------------- | ------ | ------- |
 | animationDuration     | Length of each animation loop in ms                              | number | 1000    |
 | color                 | Color of bar                                                     | string |         |
 | determinate           | Whether bar continues to animate or not                          | bool   |         |
@@ -86,6 +87,7 @@ class App extends Component {
 ### Progress Circle
 
 #### Progress Circle Indeterminate
+
 ```
 import React, { Component } from 'react';
 import { ProgressCircle } from 'react-native-material-indicator';
@@ -103,6 +105,7 @@ class App extends Component {
 ```
 
 #### Progress Circle Determinate
+
 ```
 import React, { Component } from 'react';
 import { ProgressCircle } from 'react-native-material-indicator';
@@ -131,7 +134,7 @@ class App extends Component {
 #### Props
 
 | Name                    | Description                                                      | Type   | Default       |
-|-------------------------|------------------------------------------------------------------|--------|---------------|
+| ----------------------- | ---------------------------------------------------------------- | ------ | ------------- |
 | animationDuration       | Length of each animation loop in ms                              | number | 1000          |
 | animationEasing         | Easing function for indeterminate                                | func   | Easing.linear |
 | color                   | Color of circle                                                  | string |               |
